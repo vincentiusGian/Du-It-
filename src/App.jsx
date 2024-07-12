@@ -109,7 +109,7 @@ function App() {
         <h1 className='text-5xl font-abc font-bold'>Achieve Your</h1>
         <h1 className="text-5xl font-abc font-semibold text-skygreen">Financial Dreams</h1>
         <div className='flex justify-center pt-1'>
-          <h4 className='text-m font-abc font-light text-gray w-96 pb-5'>Answer These 5 Simple Questions to Receive Personalized Budgeting Tips Instantly!</h4>
+          <h4 className='text-m font-abc font-light text-black w-96 pb-5'>Answer These 5 Simple Questions to Receive Personalized Budgeting Tips Instantly!</h4>
         </div>
         <div className='items-center pb-4'>
           <span className='bg-skygreen bg-opacity-10 w-2/12 rounded-2xl p-2 text-s font-semibold text-skygreen font-abc'>Powered by AI</span>

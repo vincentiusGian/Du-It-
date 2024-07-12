@@ -56,15 +56,18 @@ const handleSubmit = (event) => {
 
   return (
     <div className="App">
-      <form onSubmit={handleSubmit}>
-      <label>Enter your desired goal:
-        <input
+      <form onSubmit={handleSubmit} className='join join-vertical'>
+      <label className="form-control w-full max-w-xs join-item">
+      <div className="label">
+      <span className="label-text">What is your goal?</span>
+      </div>
+        <input placeholder="Type here" className="input input-bordered w-full max-w-xs"
           type="text" 
           value={goals}
           onChange={(e) => setGoals(e.target.value)}
         />
       </label>
-      <label>Enter your income:
+      <label className="join-item">Enter your income:
         <input
           type="text" 
           value={income}

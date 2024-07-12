@@ -111,7 +111,7 @@ const handleSubmit = (event) => {
         </div>
       </div>
       <div className="flex justify-center text-center">
-      <form onSubmit={handleSubmit} className='items-center join join-vertical gap-2 font-abc w-2/6 text-xs bg-opacity-60 bg-FF pl-3 pr-3 pt-5'>
+      <form onSubmit={handleSubmit} className='items-center w-2/6 join join-vertical gap-2 font-abc text-xs bg-opacity-60 bg-FF pl-3 pr-3 pt-5'>
       <label className="form-control max-w-xs join-item w-full">
       <div className="label">
       <span className="label-text font-abc">What is your financial goal?</span>
@@ -146,11 +146,13 @@ const handleSubmit = (event) => {
       <div className="label">
       <span className="label-text">How much is your expense per month?</span>
       </div>
+      <div className='text-center inline-block min-w[110px]'>
         <input placeholder="Example: Rp 5.000.000" className="input input-sm input-bordered w-full max-w-xs"
           type="text" 
           value={expense}
           onChange={(e) => setExpense(e.target.value)}
-        />
+          />
+      </div>
       </label>
       <label className="form-control w-full max-w-xs join-item">  
       <div className="label">
@@ -164,19 +166,19 @@ const handleSubmit = (event) => {
       </label>
       <label className="form-control w-full max-w-xs flex join-item pb-4">  
       <div className="label">
-      <span className="label-text">Customize your current financial condition</span>
+      <span className="label-text text-left">Customize your current financial condition</span>
       </div>
       <textarea placeholder="Example: I still live with my parents."
           type="text"
           rows="4"
           cols="70"
           id='TXT'
-          className='border-collapse w-full h-full row-span-4'
+          className='input text-wrap input-xs text-xs font-medium input-bordered max-w-xs border-collapse w-full h-full row-span-4 border border-opacity-25 rounded-lg'
           value={custom}
           onChange={(e) => setCustom(e.target.value)}
           ></textarea>
       </label>
-      <button type="submit" className="btn btn-primary" onClick={onClickHandler}>Submit</button>
+      <button type="submit" className="btn btn-primary btn-xs sm:btn-sm md:btn-md lg:btn-lg" onClick={onClickHandler}>Generate</button>
     </form>
       </div>
       </>
@@ -195,15 +197,15 @@ const handleSubmit = (event) => {
                 <h1 key={index} className="font-bold text-2xl" >{recipe.properties.Title}</h1>
               ))}
             </div>
-            <div className='join join-vertical lg:join-horizontal w-11/12 pt-20'>
-            <div className=''>
+            <div className='join join-vertical lg:join-horizontal w-11/12 pt-10 items-center'>
+            <div className='join-item w-1/2'>
               {recipes.map((recipe,index) => (
-                <ReactMarkdown key={index} children={recipe.properties.Steps}/>
+                <ReactMarkdown key={index} className="text-left m-5" children={recipe.properties.Steps}/>
               ))}
             </div>
-            <div className=''>
+            <div className='join-item w-1/2'>
               {recipes.map((recipe, index) => (
-                <ReactMarkdown key={index} className="text-left" children={recipe.properties.Recommendation}/>
+                <ReactMarkdown key={index} className="align-text-top text-left text-wrap m-5" children={recipe.properties.Recommendation}/>
               ))}
             </div>
             </div>

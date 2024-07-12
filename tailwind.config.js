@@ -11,7 +11,8 @@ module.exports = {
     colors:{
       'skygreen': '#1CABA2',
       'gray': '#C0C0C0',
-      'FF': '#F8F8F8'
+      'FF': '#F8F8F8',
+      'BG': '#F4F4F4'
     },
 
   },

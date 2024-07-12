@@ -201,7 +201,9 @@ function App() {
             <div className='m-2 pb-4 items-center'>
               <img src={robot1} alt="" width={200} height={200} className='m-auto pt-10' />
               {recipes.map((recipe, index) => (
-                <h1 key={index} className="font-bold text-3xl font-abc">{recipe.properties.Title}</h1>
+                <div key={index} className="m-5">
+                  <h1 className="font-bold text-3xl font-abc">{recipe.properties?.Title}</h1>
+                </div>
               ))}
             </div>
             <div className='items-center'>
@@ -212,7 +214,7 @@ function App() {
                 <div className='bg-opacity-100 bg-FF p-3'>
                   <span className='bg-skygreen bg-opacity-10 h-full w-2/12 rounded-2xl p-2 text-s font-semibold text-skygreen font-abc'>Actions to Do</span>
                   {recipes.map((recipe, index) => (
-                    <ReactMarkdown key={index} className="text-left m-5" children={recipe.properties.Steps} />
+                    <ReactMarkdown key={index} className="text-left m-5" children={recipe.properties?.Steps} />
                   ))}
                 </div>
               </div>
@@ -220,7 +222,7 @@ function App() {
                 <div className='bg-opacity-100 bg-FF p-3'>
                   <span className='bg-skygreen bg-opacity-10 h-full w-2/12 rounded-2xl p-2 text-s font-semibold text-skygreen font-abc'>Recommendation</span>
                   {recipes.map((recipe, index) => (
-                    <ReactMarkdown key={index} className="text-left m-5" children={recipe.properties.Recommendation} />
+                    <ReactMarkdown key={index} className="text-left m-5" children={recipe.properties?.Recommendation} />
                   ))}
                 </div>
               </div>

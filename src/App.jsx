@@ -31,11 +31,12 @@ function App() {
   const onClickHandler = async () => {
     setIsClicked(true);
     console.log("clicked");
+  
     const model = genAI.getGenerativeModel({ model: "gemini-1.5-flash" });
-
+  
     const prompt = `
       You are a financial consultant. The output format is json.
-
+  
       without the file header
       You are given:
         financial goal: ${goals},
@@ -58,27 +59,29 @@ function App() {
         }
       }
       ***DON'T FORGET****
-
+  
       Title, Step by step to achieve that goal, Recommendation are include to properties of the object.
-
+  
       and wrap only with [], remove the markdown. DO NOT FORGET TO INCLUDE THE "type" and "properties"
-
-
+  
+  
       convert to string, remove all json word and backticks, convert to json without header again.
-
+  
       Each properties have their own title with large and bolded except "Title"!
       Make the markdown aligned to the left. Don't forget that after every enumeration give line break.
-
+  
       Review before you respond. Remove the markdown only for code.
     `;
-
+  
     try {
       const result = await model.generateContent(prompt);
       const response = await result.response;
       let data = await response.text();
+  
+      // Sanitize the JSON data
       data = data.replace(/json/gm, "").replace(/`/g, "").trim();
-      console.log(data);
-
+  
+      // Parse JSON data
       const recipesList = JSON.parse(data);
       setRecipes(recipesList);
     } catch (error) {

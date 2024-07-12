@@ -46,8 +46,10 @@ function App() {
       
       PLEASE JUST CONSIDER THE INPUT THAT RECEIVED. IF THE INPUT IS INSUFFICIENT, GO AHEAD WITH YOUR DATA.
       Please analyze and give user respond:
-      Title, Step by step to achieve that goal, Recommendation.
+      
+      
       Make the response using this json format (don't respond with markdown only for json):
+      ***DON'T FORGET****
       { "type": "object",
         "properties": {
           "Title": { "type": "string" },
@@ -55,8 +57,11 @@ function App() {
           "Recommendation": {"type": "string"},
         }
       }
+      ***DON'T FORGET****
 
-      and wrap only with [], remove the markwodn.
+      Title, Step by step to achieve that goal, Recommendation are include to properties of the object.
+
+      and wrap only with [], remove the markdown. DO NOT FORGET TO INCLUDE THE "type" and "properties"
 
 
       convert to string, remove all json word and backticks, convert to json without header again.

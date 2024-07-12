@@ -21,6 +21,12 @@ function App() {
   const [custom, setCustom] = useState("");
   const [recipes, setRecipes] = useState([]);
   const [isClicked, setIsClicked] = useState(false);
+  const [formValid, setFormValid] = useState(false); // State to track form validation
+
+  useEffect(() => {
+    // Check if all required fields are filled
+    setFormValid(goals !== "" && value !== "" && income !== "" && expense !== "" && cursav !== "" && custom !== "");
+  }, [goals, value, income, expense, cursav, custom]);
 
   const onClickHandler = async () => {
     setIsClicked(true);
@@ -171,7 +177,14 @@ function App() {
                 onChange={(e) => setCustom(e.target.value)}
               ></textarea>
             </label>
-            <button type="submit"  className="btn text-white bg-skygreen btn-xs sm:btn-sm md:btn-md lg:btn-md w-full max-w-xs h-fit max-h-xs  p-3" onClick={onClickHandler}>Generate</button>
+            <button
+              type="submit"
+              className={`btn text-white bg-skygreen btn-xs sm:btn-sm md:btn-md lg:btn-md w-full max-w-xs h-fit max-h-xs p-3 ${formValid ? "" : "opacity-50 cursor-not-allowed"}`}
+              onClick={onClickHandler}
+              disabled={!formValid}
+            >
+              Generate
+            </button>
           </form>
         </div>
       </div>

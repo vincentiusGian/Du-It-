@@ -21,12 +21,6 @@ function App() {
   const [custom, setCustom] = useState("");
   const [recipes, setRecipes] = useState([]);
   const [isClicked, setIsClicked] = useState(false);
-  const [formValid, setFormValid] = useState(false); // State to track form validation
-
-  useEffect(() => {
-    // Check if all required fields are filled
-    setFormValid(goals !== "" && value !== "" && income !== "" && expense !== "" && cursav !== "" && custom !== "");
-  }, [goals, value, income, expense, cursav, custom]);
 
   const onClickHandler = async () => {
     setIsClicked(true);
@@ -99,7 +93,7 @@ function App() {
 
   function displayForm() {
     return (
-      <div className='inblock p-5 gap-3 font-abc'>
+      <div className='inblock p-5 gap-3'>
         <img src={robot2} alt="" width={200} height={200} className='m-auto pt-10' />
         <h1 className='text-5xl font-abc font-bold'>Achieve Your</h1>
         <h1 className="text-5xl font-abc font-semibold text-skygreen">Financial Dreams</h1>
@@ -113,7 +107,7 @@ function App() {
           <form onSubmit={handleSubmit} className='items-center w-full md:w-2/3 lg:w-1/2 xl:w-1/3 join join-vertical gap-2 font-abc text-xs bg-opacity-60 bg-FF pl-3 pr-3 pt-5'>
             <label className="form-control max-w-xs join-item w-full">
               <div className="label">
-                <span className="label-text font-abc text-left">What is your financial goal?</span>
+                <span className="label-text font-abc">What is your financial goal?</span>
               </div>
               <input placeholder="Example: buy a new house, etc" className="w-full max-w-xl input font-abc input-sm input-bordered"
                 type="text"
@@ -123,7 +117,7 @@ function App() {
             </label>
             <label className="form-control w-full max-w-xs join-item">
               <div className="label">
-                <span className="label-text text-left">What is the value of your goal?</span>
+                <span className="label-text">What is the value of your goal?</span>
               </div>
               <input placeholder="Example: Rp 250.000.000" className="input input-sm input-bordered w-full max-w-xs"
                 type="text"
@@ -133,7 +127,7 @@ function App() {
             </label>
             <label className="form-control w-full max-w-xs join-item">
               <div className="label">
-                <span className="label-text text-left">How much is your income per month?</span>
+                <span className="label-text">How much is your income per month?</span>
               </div>
               <input placeholder="Example: Rp 25.000.000" className="input input-sm input-bordered w-full max-w-xs"
                 type="text"
@@ -143,7 +137,7 @@ function App() {
             </label>
             <label className="form-control w-full max-w-xs join-item">
               <div className="label">
-                <span className="label-text text-left">How much is your expense per month?</span>
+                <span className="label-text">How much is your expense per month?</span>
               </div>
               <div className='text-center inline-block min-w[110px]'>
                 <input placeholder="Example: Rp 5.000.000" className="input input-sm input-bordered w-full max-w-xs"
@@ -177,14 +171,7 @@ function App() {
                 onChange={(e) => setCustom(e.target.value)}
               ></textarea>
             </label>
-            <button
-              type="submit"
-              className={`btn text-white bg-skygreen btn-xs sm:btn-sm md:btn-md lg:btn-md w-full max-w-xs h-fit max-h-xs p-3 ${formValid ? "" : "opacity-50 cursor-not-allowed"}`}
-              onClick={onClickHandler}
-              disabled={!formValid}
-            >
-              Generate
-            </button>
+            <button type="submit"  className="btn text-white bg-skygreen btn-xs sm:btn-sm md:btn-md lg:btn-md w-full max-w-xs h-fit max-h-xs  p-3" onClick={onClickHandler}>Generate</button>
           </form>
         </div>
       </div>
@@ -201,9 +188,7 @@ function App() {
             <div className='m-2 pb-4 items-center'>
               <img src={robot1} alt="" width={200} height={200} className='m-auto pt-10' />
               {recipes.map((recipe, index) => (
-                <div key={index} className="m-5">
-                  <h1 className="font-bold text-3xl font-abc">{recipe.properties?.Title}</h1>
-                </div>
+                <h1 key={index} className="font-bold text-3xl font-abc">{recipe.properties.Title}</h1>
               ))}
             </div>
             <div className='items-center'>
@@ -214,7 +199,7 @@ function App() {
                 <div className='bg-opacity-100 bg-FF p-3'>
                   <span className='bg-skygreen bg-opacity-10 h-full w-2/12 rounded-2xl p-2 text-s font-semibold text-skygreen font-abc'>Actions to Do</span>
                   {recipes.map((recipe, index) => (
-                    <ReactMarkdown key={index} className="text-left m-5" children={recipe.properties?.Steps} />
+                    <ReactMarkdown key={index} className="text-left m-5" children={recipe.properties.Steps} />
                   ))}
                 </div>
               </div>
@@ -222,7 +207,7 @@ function App() {
                 <div className='bg-opacity-100 bg-FF p-3'>
                   <span className='bg-skygreen bg-opacity-10 h-full w-2/12 rounded-2xl p-2 text-s font-semibold text-skygreen font-abc'>Recommendation</span>
                   {recipes.map((recipe, index) => (
-                    <ReactMarkdown key={index} className="text-left m-5" children={recipe.properties?.Recommendation} />
+                    <ReactMarkdown key={index} className="text-left m-5" children={recipe.properties.Recommendation} />
                   ))}
                 </div>
               </div>

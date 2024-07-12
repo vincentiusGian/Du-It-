@@ -46,18 +46,24 @@ function App() {
     PLEASE JUST CONSIDER THE INPUT THAT RECEIVED. IF THE INPUT IS INSUFFICIENT, GO AHEAD WITH YOUR DATA.
   Please analyze and give user respond:
   Title, Step by step to achieve that goal, Recommendation.
-  Make the response using this json format:
-  [{ "type": "object",
+  Make the response using this json format (don't respond with markdown only for json):
+  { "type": "object",
     "properties": {
       "Title": { "type": "string" },
       "Steps": {"type": "string"},
       "Recommendation": {"type": "string"},
     }
-  }]
+  }
+
+  and wrap only with [], remove the markwodn.
+
+
+  convert to string, remove all json word and backticks, convert to json without header again.
 
   Each properties have their own title with large and bolded except "Title"!
   Make the markdown aligned to the left.
 
+  Review before you respond. Remove the markdown only for code.
   
   `;
 
@@ -69,8 +75,9 @@ function App() {
   try {
     const result = await model.generateContent(prompt);
     const response = await result.response;
-    const data = await removeJsonHeader(response.text());
-    
+    let data = await response.text();
+    // Remove the initial "json" directive and backticks
+    data = data.replace(/json/gm, "").replace(/`/g, "").trim();
     console.log(data);
 
     const recipesList = JSON.parse(data);
@@ -185,18 +192,18 @@ const handleSubmit = (event) => {
             <h2>Generated Recipes:</h2>
             <div>
               {recipes.map((recipe, index) => (
-                <h1 key={index} className="font-bold text-2xl" >{recipe.Title}</h1>
+                <h1 key={index} className="font-bold text-2xl" >{recipe.properties.Title}</h1>
               ))}
             </div>
             <div className='join join-vertical lg:join-horizontal w-11/12 pt-20'>
             <div className=''>
               {recipes.map((recipe,index) => (
-                <ReactMarkdown key={index} children={recipe.Steps}/>
+                <ReactMarkdown key={index} children={recipe.properties.Steps}/>
               ))}
             </div>
             <div className=''>
               {recipes.map((recipe, index) => (
-                <ReactMarkdown key={index} className="text-left" children={recipe.Recommendation}/>
+                <ReactMarkdown key={index} className="text-left" children={recipe.properties.Recommendation}/>
               ))}
             </div>
             </div>

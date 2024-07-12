@@ -99,7 +99,7 @@ function App() {
 
   function displayForm() {
     return (
-      <div className='inblock p-5 gap-3'>
+      <div className='inblock p-5 gap-3 font-abc'>
         <img src={robot2} alt="" width={200} height={200} className='m-auto pt-10' />
         <h1 className='text-5xl font-abc font-bold'>Achieve Your</h1>
         <h1 className="text-5xl font-abc font-semibold text-skygreen">Financial Dreams</h1>

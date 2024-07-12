@@ -113,7 +113,7 @@ function App() {
           <form onSubmit={handleSubmit} className='items-center w-full md:w-2/3 lg:w-1/2 xl:w-1/3 join join-vertical gap-2 font-abc text-xs bg-opacity-60 bg-FF pl-3 pr-3 pt-5'>
             <label className="form-control max-w-xs join-item w-full">
               <div className="label">
-                <span className="label-text font-abc">What is your financial goal?</span>
+                <span className="label-text font-abc text-left">What is your financial goal?</span>
               </div>
               <input placeholder="Example: buy a new house, etc" className="w-full max-w-xl input font-abc input-sm input-bordered"
                 type="text"
@@ -123,7 +123,7 @@ function App() {
             </label>
             <label className="form-control w-full max-w-xs join-item">
               <div className="label">
-                <span className="label-text">What is the value of your goal?</span>
+                <span className="label-text text-left">What is the value of your goal?</span>
               </div>
               <input placeholder="Example: Rp 250.000.000" className="input input-sm input-bordered w-full max-w-xs"
                 type="text"
@@ -133,7 +133,7 @@ function App() {
             </label>
             <label className="form-control w-full max-w-xs join-item">
               <div className="label">
-                <span className="label-text">How much is your income per month?</span>
+                <span className="label-text text-left">How much is your income per month?</span>
               </div>
               <input placeholder="Example: Rp 25.000.000" className="input input-sm input-bordered w-full max-w-xs"
                 type="text"
@@ -143,7 +143,7 @@ function App() {
             </label>
             <label className="form-control w-full max-w-xs join-item">
               <div className="label">
-                <span className="label-text">How much is your expense per month?</span>
+                <span className="label-text text-left">How much is your expense per month?</span>
               </div>
               <div className='text-center inline-block min-w[110px]'>
                 <input placeholder="Example: Rp 5.000.000" className="input input-sm input-bordered w-full max-w-xs"

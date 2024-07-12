@@ -190,29 +190,29 @@ function App() {
             <div className='m-2 pb-4 items-center'>
               <img src={robot1} alt="" width={200} height={200} className='m-auto pt-10' />
               {recipes.map((recipe, index) => (
-                <h1 key={index} className="font-bold text-3xl font-abc">{recipe.properties.Title}</h1>
+                <div key={index} className="m-5">
+                  {recipe.properties ? (
+                    <>
+                      <h1 className="font-bold text-3xl font-abc">{recipe.properties?.Title}</h1>
+                      <div className='bg-opacity-100 bg-FF p-3'>
+                        <span className='bg-skygreen bg-opacity-10 h-full w-2/12 rounded-2xl p-2 text-s font-semibold text-skygreen font-abc'>Actions to Do</span>
+                        <ReactMarkdown className="text-left m-5" children={recipe.properties?.Steps} />
+                      </div>
+                      <div className='bg-opacity-100 bg-FF p-3'>
+                        <span className='bg-skygreen bg-opacity-10 h-full w-2/12 rounded-2xl p-2 text-s font-semibold text-skygreen font-abc'>Recommendation</span>
+                        <ReactMarkdown className="text-left m-5" children={recipe.properties?.Recommendation} />
+                      </div>
+                    </>
+                  ) : (
+                    <p className="text-red-500">Recipe properties are missing.</p>
+                  )}
+                </div>
               ))}
             </div>
             <div className='items-center'>
               <span className='bg-skygreen bg-opacity-10 w-2/12 rounded-2xl p-2 text-s font-semibold text-skygreen font-abc'>Powered by AI</span>
             </div>
             <div className='relative m-auto join-vertical lg:join-horizontal w-11/12 pt-10 flex flex-wrap'>
-              <div className='w-full lg:w-1/2 p-3'>
-                <div className='bg-opacity-100 bg-FF p-3'>
-                  <span className='bg-skygreen bg-opacity-10 h-full w-2/12 rounded-2xl p-2 text-s font-semibold text-skygreen font-abc'>Actions to Do</span>
-                  {recipes.map((recipe, index) => (
-                    <ReactMarkdown key={index} className="text-left m-5" children={recipe.properties.Steps} />
-                  ))}
-                </div>
-              </div>
-              <div className='w-full lg:w-1/2 p-3'>
-                <div className='bg-opacity-100 bg-FF p-3'>
-                  <span className='bg-skygreen bg-opacity-10 h-full w-2/12 rounded-2xl p-2 text-s font-semibold text-skygreen font-abc'>Recommendation</span>
-                  {recipes.map((recipe, index) => (
-                    <ReactMarkdown key={index} className="text-left m-5" children={recipe.properties.Recommendation} />
-                  ))}
-                </div>
-              </div>
               <div className="flex align-middle m-auto items-center">
                 <button type="button" className="btn text-white bg-skygreen btn-xs sm:btn-sm md:btn-md lg:btn-md mt-5" onClick={handleBack}>Back to Form</button>
               </div>
@@ -228,6 +228,7 @@ function App() {
       </div>
     );
   }
+  
 
   return (
     <main className="App bg-my-image bg-opacity-10">

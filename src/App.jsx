@@ -4,6 +4,9 @@ import { GoogleGenerativeAI } from "@google/generative-ai";
 import ReactDOM from 'react-dom/client';
 import { useState, useEffect } from 'react';
 import ReactMarkdown from 'react-markdown';
+import Loading from './loading.json';
+import Lottie from 'lottie-react';
+import robot1 from './robot1.svg';
 
 
 const genAI = new GoogleGenerativeAI(process.env.REACT_APP_API_KEY);
@@ -188,22 +191,29 @@ const handleSubmit = (event) => {
   function displayResponse()
   {
     return (
-      <div> 
+      <div>
+      <div className='bg-my-image relative'> 
         {recipes.length > 0 ? (
           <div>
             <h2>Generated Recipes:</h2>
-            <div>
+            <div className='m-2 pb-4'>
+            <img src={robot1} alt ="" width={100} height={100}/>
               {recipes.map((recipe, index) => (
-                <h1 key={index} className="font-bold text-2xl" >{recipe.properties.Title}</h1>
+                <h1 key={index} className="font-bold text-2xl font-abc" >{recipe.properties.Title}</h1>
               ))}
             </div>
-            <div className='join join-vertical lg:join-horizontal w-11/12 pt-10 items-center'>
-            <div className='join-item w-1/2'>
+            <div className='items-center '>
+            <span className='bg-skygreen bg-opacity-10 w-2/12 rounded-2xl p-2 text-s font-semibold text-skygreen font-abc'>Powered by AI</span>
+            </div>
+            <div className='relative join-vertical flex-row join lg:join-horizontal w-11/12 pt-10 '>
+            <div className='w-1/2 join-item '>
+            <span className='bg-skygreen bg-opacity-10 h-full h-max-96 w-2/12 rounded-2xl p-2 text-s font-semibold text-skygreen font-abc'>Actions to Do</span>
               {recipes.map((recipe,index) => (
                 <ReactMarkdown key={index} className="text-left m-5" children={recipe.properties.Steps}/>
               ))}
             </div>
-            <div className='join-item w-1/2'>
+            <div className=' w-1/2 join-item relative '>
+            <span className='bg-skygreen bg-opacity-10 h-full h-max-96 w-2/12 rounded-2xl p-2 text-s font-semibold text-skygreen font-abc'>Recommendation</span>
               {recipes.map((recipe, index) => (
                 <ReactMarkdown key={index} className="align-text-top text-left text-wrap m-5" children={recipe.properties.Recommendation}/>
               ))}
@@ -211,8 +221,9 @@ const handleSubmit = (event) => {
             </div>
           </div>
         ) : (
-            <h1>LOADING BOS</h1>
+            <Lottie animationData={Loading}/>
         )}
+      </div>
       </div>
     );
   }
@@ -222,7 +233,6 @@ const handleSubmit = (event) => {
     <main className="App">
       {!isClicked && displayForm()}
       {isClicked && displayResponse()}
-      
     </main>
   );
 

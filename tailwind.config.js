@@ -4,7 +4,11 @@ module.exports = {
     "./src/**/*.{js,jsx,ts,tsx}",
   ],
   theme: {
-    extend: {},
+    extend: {
+      backgroundImage:{
+        'my-image':"url(/public/interface.svg)"
+      }
+    },
     fontFamily:{
       abc:["IBM-Plex-Mono", "monospace"],
     },

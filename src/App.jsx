@@ -61,7 +61,7 @@ function App() {
   convert to string, remove all json word and backticks, convert to json without header again.
 
   Each properties have their own title with large and bolded except "Title"!
-  Make the markdown aligned to the left.
+  Make the markdown aligned to the left. Don't forget that after every enumeration give line break.
 
   Review before you respond. Remove the markdown only for code.
   

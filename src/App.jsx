@@ -50,6 +50,7 @@ function App() {
         }
       }
 
+
       and wrap only with [], remove the markwodn.
 
 
@@ -57,6 +58,7 @@ function App() {
 
       Each properties have their own title with large and bolded except "Title"!
       Make the markdown aligned to the left. Don't forget that after every enumeration give line break.
+      Enumerate the steps and recommendation
 
       Review before you respond. Remove the markdown only for code.
     `;

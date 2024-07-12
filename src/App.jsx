@@ -48,7 +48,13 @@ function App() {
   }
 
   const [goals, setGoals] = useState("");
+  const [value, setValue] = useState("");
   const [income, setIncome] = useState("");
+  const [expense, setExpense] = useState("");
+  const [cursav, setCursav] = useState("");
+  const [custom, setCustom] = useState("");
+
+
 const handleSubmit = (event) => {
     event.preventDefault();
   }
@@ -59,19 +65,62 @@ const handleSubmit = (event) => {
       <form onSubmit={handleSubmit} className='join join-vertical'>
       <label className="form-control w-full max-w-xs join-item">
       <div className="label">
-      <span className="label-text">What is your goal?</span>
+      <span className="label-text">What is your financial goal?</span>
       </div>
-        <input placeholder="Type here" className="input input-bordered w-full max-w-xs"
+        <input placeholder="Example: buy a new house, study abroad, etc" className="input input-sm input-bordered w-full max-w-xs"
           type="text" 
           value={goals}
           onChange={(e) => setGoals(e.target.value)}
         />
       </label>
-      <label className="join-item">Enter your income:
-        <input
+      <label className="form-control w-full max-w-xs join-item">  
+      <div className="label">
+      <span className="label-text">What is the value of your goal?</span>
+      </div>
+        <input placeholder="Example: Rp 250.000.000" className="input input-sm input-bordered w-full max-w-xs"
+          type="text" 
+          value={value}
+          onChange={(e) => setValue(e.target.value)}
+        />
+      </label>
+      <label className="form-control w-full max-w-xs join-item">  
+      <div className="label">
+      <span className="label-text">How much is your income per month?</span>
+      </div>
+        <input placeholder="Example: Rp 25.000.000" className="input input-sm input-bordered w-full max-w-xs"
           type="text" 
           value={income}
           onChange={(e) => setIncome(e.target.value)}
+        />
+      </label>
+      <label className="form-control w-full max-w-xs join-item">  
+      <div className="label">
+      <span className="label-text">How much is your income per month?</span>
+      </div>
+        <input placeholder="Example: Rp 5.000.000" className="input input-sm input-bordered w-full max-w-xs"
+          type="text" 
+          value={expense}
+          onChange={(e) => setExpense(e.target.value)}
+        />
+      </label>
+      <label className="form-control w-full max-w-xs join-item">  
+      <div className="label">
+      <span className="label-text">How much is your current saving for this goal?</span>
+      </div>
+        <input placeholder="Example: Rp 105.000.000" className="input input-sm input-bordered w-full max-w-xs"
+          type="text" 
+          value={cursav}
+          onChange={(e) => setCursav(e.target.value)}
+        />
+      </label>
+      <label className="form-control w-full max-w-xs join-item">  
+      <div className="label">
+      <div className="label-text">How much is your income per month?</div>
+      </div>
+        <input placeholder="Example: I still live with my parents, but I need to provde stable income" className="input input-lg text-sm input-bordered w-full max-w-xs"
+          type="text" 
+          value={custom}
+          onChange={(e) => setCustom(e.target.value)}
         />
       </label>
       <input type="submit" onClick={onClickHandler}/>

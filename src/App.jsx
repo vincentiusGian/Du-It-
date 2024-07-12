@@ -69,7 +69,9 @@ function App() {
   
       Each properties have their own title with large and bolded except "Title"!
       Make the markdown aligned to the left. Don't forget that after every enumeration give line break.
-  
+      Make the steps and recommendation mention about timeline.
+      Make the steps specificly detail.
+
       Review before you respond. Remove the markdown only for code.
     `;
   
